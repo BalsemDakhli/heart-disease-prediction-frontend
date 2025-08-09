@@ -1,0 +1,88 @@
+<h2>Prédiction du risque cardiaque</h2>
+
+<form (ngSubmit)="onSubmit()" #patientForm="ngForm">
+  <div>
+    <label>Nom:</label>
+    <input type="text" name="nom" [(ngModel)]="patient.nom" required />
+  </div>
+
+  <div>
+    <label>Prénom:</label>
+    <input type="text" name="prenom" [(ngModel)]="patient.prenom" required />
+  </div>
+
+  <div>
+    <label>Âge:</label>
+    <input type="number" name="age" [(ngModel)]="patient.age" required />
+  </div>
+
+  <div>
+    <label>Sexe (0 = Femme, 1 = Homme):</label>
+    <input type="number" name="sex" [(ngModel)]="patient.sex" required />
+  </div>
+
+  <div>
+    <label>Type de douleur thoracique (cp):</label>
+    <input type="number" name="cp" [(ngModel)]="patient.cp" required />
+  </div>
+
+  <div>
+    <label>Tension artérielle au repos (trestbps):</label>
+    <input type="number" name="trestbps" [(ngModel)]="patient.trestbps" required />
+  </div>
+
+  <div>
+    <label>Cholestérol (chol):</label>
+    <input type="number" name="chol" [(ngModel)]="patient.chol" required />
+  </div>
+
+  <div>
+    <label>Sucre à jeun > 120 mg/dl (fbs):</label>
+    <input type="number" name="fbs" [(ngModel)]="patient.fbs" required />
+  </div>
+
+  <div>
+    <label>Résultat ECG au repos (restecg):</label>
+    <input type="number" name="restecg" [(ngModel)]="patient.restecg" required />
+  </div>
+
+  <div>
+    <label>Fréquence cardiaque max atteinte (thalach):</label>
+    <input type="number" name="thalach" [(ngModel)]="patient.thalach" required />
+  </div>
+
+  <div>
+    <label>Angine induite par l’effort (exang):</label>
+    <input type="number" name="exang" [(ngModel)]="patient.exang" required />
+  </div>
+
+  <div>
+    <label>Ancienneté du pic ST (oldpeak):</label>
+    <input type="number" step="0.1" name="oldpeak" [(ngModel)]="patient.oldpeak" required />
+  </div>
+
+  <div>
+    <label>Pente du segment ST (slope):</label>
+    <input type="number" name="slope" [(ngModel)]="patient.slope" required />
+  </div>
+
+  <div>
+    <label>Nombre de vaisseaux colorés (ca):</label>
+    <input type="number" name="ca" [(ngModel)]="patient.ca" required />
+  </div>
+
+  <div>
+    <label>Thalassémie (thal):</label>
+    <input type="number" name="thal" [(ngModel)]="patient.thal" required />
+  </div>
+
+  <button type="submit">Prédire</button>
+</form>
+
+<!-- Affichage des résultats -->
+<div *ngIf="result">
+  <h3>Résultat :</h3>
+  <p><strong>Risque :</strong> {{ result.heart_disease_risk === 1 ? 'Élevé' : 'Faible' }}</p>
+  <p><strong>Niveau de certitude  :</strong> {{ result.probability }}</p>
+  <p><strong>Recommandation :</strong> {{ result.recommendation }}</p>
+</div>

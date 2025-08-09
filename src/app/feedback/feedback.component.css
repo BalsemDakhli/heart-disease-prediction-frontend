@@ -1,0 +1,7 @@
+.stars span {
+  color: gray;
+}
+
+.stars span.filled {
+  color: gold;
+}

@@ -1,0 +1,38 @@
+<h2>🔍 Rechercher un patient</h2>
+
+<form (ngSubmit)="onSearch()" #searchForm="ngForm">
+  <label for="nom">Nom :</label>
+  <input type="text" name="nom" [(ngModel)]="nom" required />
+
+  <label for="prenom">Prénom :</label>
+  <input type="text" name="prenom" [(ngModel)]="prenom" required />
+
+  <button type="submit">Rechercher</button>
+</form>
+
+<div *ngIf="patient">
+  <h3>Résultats :</h3>
+  <ul>
+    <li><strong>Nom :</strong> {{ patient.nom }}</li>
+    <li><strong>Prénom :</strong> {{ patient.prenom }}</li>
+    <li><strong>Âge :</strong> {{ patient.age }}</li>
+    <li><strong>Sexe :</strong> {{ patient.sex === 1 ? 'Homme' : 'Femme' }}</li>
+    <li><strong>Type de douleur thoracique :</strong> {{ patient.cp }}</li>
+    <li><strong>Tension artérielle :</strong> {{ patient.trestbps }}</li>
+    <li><strong>Cholestérol :</strong> {{ patient.chol }}</li>
+    <li><strong>Sucre à jeun :</strong> {{ patient.fbs }}</li>
+    <li><strong>ECG repos :</strong> {{ patient.restecg }}</li>
+    <li><strong>Fréquence cardiaque max :</strong> {{ patient.thalach }}</li>
+    <li><strong>Angine :</strong> {{ patient.exang === 1 ? 'Oui' : 'Non' }}</li>
+    <li><strong>Ancienneté du pic ST :</strong> {{ patient.oldpeak }}</li>
+    <li><strong>Pente du segment ST :</strong> {{ patient.slope }}</li>
+    <li><strong>Nombre de vaisseaux colorés :</strong> {{ patient.ca }}</li>
+    <li><strong>Thalassémie :</strong> {{ patient.thal }}</li>
+    <li><strong>Prédiction du risque :</strong> {{ patient.prediction === 1 ? 'Élevé' : 'Faible' }}</li>
+    <li><strong>Niveau de certitude  :</strong> {{ (patient.probability * 100) | number:'1.2-2' }} %</li>
+  </ul>
+</div>
+
+<div *ngIf="errorMessage" style="color: red;">
+  {{ errorMessage }}
+</div>

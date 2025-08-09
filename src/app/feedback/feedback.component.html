@@ -1,0 +1,30 @@
+<h2>Donnez votre avis</h2>
+
+<div *ngIf="!submitted; else thankYouTemplate">
+  <label>Votre niveau de satisfaction :</label>
+  <div class="stars">
+    <span
+      *ngFor="let star of [1,2,3,4,5]"
+      (click)="setRating(star)"
+      [class.filled]="star <= rating"
+      style="cursor: pointer; font-size: 2rem;"
+    >
+      ★
+    </span>
+  </div>
+
+  <textarea
+    [(ngModel)]="comment"
+    placeholder="Laissez un commentaire (optionnel)"
+    rows="4"
+    cols="50"
+  ></textarea>
+
+  <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+
+  <button (click)="submitFeedback()">Envoyer</button>
+</div>
+
+<ng-template #thankYouTemplate>
+  <h3>Merci pour votre retour !</h3>
+</ng-template>
